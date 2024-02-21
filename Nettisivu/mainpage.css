@@ -38,3 +38,27 @@ footer{
   float: left;
   text-align: left;
 }
+
+main{
+  margin: auto;
+  width: 50%;
+  border: 3px solid #06377B;
+  padding: 10px;
+  height: 350px;
+}
+
+.leftbox{
+  float: left;
+  border: 3px solid #06377B;
+  padding: 10px;
+  height: 327px
+}
+
+.rightbox{
+  position: relative;
+  margin-left: 10px;
+  float: left;
+  border: 3px solid #06377B;
+  padding: 10px;
+  height: 327px;
+}
