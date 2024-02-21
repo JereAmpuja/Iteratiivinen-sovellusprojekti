@@ -23,6 +23,7 @@ header {
 }
 
 #headerlogo {
+  text-align: left;
   height: 120px;
   float: left;
 }
