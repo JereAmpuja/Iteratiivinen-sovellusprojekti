@@ -18,3 +18,22 @@ header {
   width: 40px;
   margin-right: 10px;
 }
+
+footer{
+  background-color: #06377B;
+  height: 50px;
+  margin-top: 50px;
+  color: white;
+}
+
+.rfooter{
+  width: 50%;
+  float: right;
+  text-align: right;
+}
+
+.lfooter{
+  width: 50%;
+  float: left;
+  text-align: left;
+}
