@@ -13,4 +13,8 @@ header {
   padding: 0 20px;
 }
 
-
+#headerlogo {
+  height: 40px;
+  width: 40px;
+  margin-right: 10px;
+}
