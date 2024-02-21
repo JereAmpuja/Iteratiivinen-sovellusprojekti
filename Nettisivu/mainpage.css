@@ -16,7 +16,7 @@ h1 {
 }
 
 #headerlogo {
-  float: left;
+  text-align: left;
   height: 120px;
   width: px;
   display: flex;
