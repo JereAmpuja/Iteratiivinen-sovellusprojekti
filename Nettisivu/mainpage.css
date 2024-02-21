@@ -16,10 +16,12 @@ header {
 
 #headerteksti {
     font-family: Arial;
-    margin-top: 45px;
-    font-size: 30px;
+    font-size: 25px;
     font-weight: normal;
     text-align: center;
+    vertical-align: middle;
+    line-height: 90px;
+    margin-right: 205px;
 }
 
 #headerlogo {
