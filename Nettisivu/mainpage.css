@@ -1,20 +1,21 @@
+
+
 header {
   padding: 0;
   margin: 0;
   background-color: #06377B;
-  border-bottom: 1px solid #e6e6e6;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+  color: white;
   z-index: 100;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 60px;
-  padding: 0 20px;
+  height: 120px;
+  margin: -8px;
 }
 
 #headerlogo {
-  height: 40px;
-  width: 40px;
+  height: 120px;
+  width: px;
   margin-right: 10px;
 }
