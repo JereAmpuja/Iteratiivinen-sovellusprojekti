@@ -35,7 +35,6 @@ footer{
   height: 50px;
   margin-top: 50px;
   color: white;
-  position: fixed;
   bottom: 0;
   width: 100%;
   height: 100px;
@@ -73,9 +72,10 @@ main {
 
 .left {
 	background-color: #06377B;
-  width: 300px;
+  width: 600px;
   height: 1000px;
-  margin-right:50px;
+  margin-right:10px;
+  margin-left:50px;
   color: #f1f1f1;
   
 }
@@ -85,18 +85,29 @@ main {
   width: 1600px;
   height: 1000px;
   margin-right: 50px;
+  color: #f1f1f1;
 }
 
-.inner-box a{
-  float:left;
+.sijainti{
   display: block;
   padding: 14px 16px;
-  color: white;
+  color: black;
+  background-color: #f1f1f1;
   font-size: 22px;
+  width: 100%;
+  text-align: left;
+  margin-top: 3px;
+  margin-bottom: 3px;
 }
 
-.inner-box a:hover{
-  background-color:gray
+.sijainti:hover{
+  background-color: black;
+  color: #f1f1f1;
+}
+
+.sijainti:active{
+  background-color: black;
+  color: #f1f1f1;
 }
 
 .inner-box {
