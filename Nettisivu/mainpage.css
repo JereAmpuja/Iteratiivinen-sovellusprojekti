@@ -156,3 +156,17 @@ margin-left: -5px;
 	margin-bottom: 10px;
 	font-weight: bold;
 }
+
+#pvm
+{
+	font-size: 24px;
+	margin-top: -45px;
+	text-align: right;
+}
+
+#klo
+{
+	font-size: 24px;
+	margin-top: -10px;
+	text-align: right;
+}
