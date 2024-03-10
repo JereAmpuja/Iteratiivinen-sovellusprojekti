@@ -122,12 +122,35 @@ main {
 	margin-bottom: 10px;
 }
 
-.mittari {
-  background-color: black;
-  width: 150px;
-  padding: 5px;
-  text-align: center;
-  border:5px solid #f2f2f2;
-  margin-top: 10px;
-  margin-bottom: 10px;
+#korkea
+{
+margin-bottom: 80px;
+margin-left: 50px;
+
+}
+
+#keskiverto
+{
+	margin-bottom: 80px;
+	margin-left: 50px;
+
+
+}
+
+#matala
+{
+	margin-bottom: 80px;
+	margin-left: 50px;
+}
+
+
+ mittari {
+	background-color: black;
+	width: 150px;
+	padding: 5px;
+	text-align: center;
+	border:5px solid #f2f2f2;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	font-weight: bold;
 }
