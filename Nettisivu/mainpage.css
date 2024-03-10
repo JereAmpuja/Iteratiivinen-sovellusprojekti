@@ -65,39 +65,40 @@ main {
 }
 
 .box {
-	width: 45%;
+	float:left;
 	padding: 20px;
 	box-sizing: border-box;
 }
 
 .left {
 	background-color: #06377B;
-  width: 600px;
-  height: 1000px;
-  margin-right:10px;
-  margin-left:50px;
-  color: #f1f1f1;
+	width: 297px;
+	height: 756px;
+	margin-right:10px;
+	margin-left:50px;
+	color: #f1f1f1;
   
 }
 
 .right {
 	background-color: #06377B;
-  width: 1600px;
-  height: 1000px;
-  margin-right: 50px;
-  color: #f1f1f1;
+	width: 670px;
+	height: 756px;
+	margin-right: 50px;
+	color: #f1f1f1;
 }
 
 .sijainti{
   display: block;
-  padding: 14px 16px;
+  padding: 6px;
   color: black;
   background-color: #f1f1f1;
-  font-size: 22px;
-  width: 100%;
-  text-align: left;
+  font-size: 24px;
+  width: 90%;
   margin-top: 14px;
   margin-bottom: 14px;
+  text-align: center;
+
 }
 
 .sijainti:hover{
@@ -111,7 +112,9 @@ main {
 }
 
 .inner-box {
+	margin: -15px;
 	display: block;
+	margin-left: 10px;
 }
 
 .small-box {
