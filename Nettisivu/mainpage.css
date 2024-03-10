@@ -67,7 +67,7 @@ main {
 .box {
 	float:left;
 	padding: 20px;
-	box-sizing: border-box;
+	
 }
 
 .left {
@@ -84,7 +84,7 @@ main {
 	background-color: #06377B;
 	width: 670px;
 	height: 756px;
-	margin-right: 50px;
+	margin-right: px;
 	color: #f1f1f1;
 }
 
@@ -103,7 +103,8 @@ main {
 
 .tieto{
   display: block;
-  padding: 14px 16px;
+  margin-top: 35px;
+  padding: 14px 15px;
   color: #f1f1f1;
   background-color: black;
   font-size: 22px;
@@ -124,7 +125,7 @@ main {
 .inner-box {
 	margin: -15px;
 	display: block;
-	margin-left: 10px;
+	margin-left: 15px;
 }
 
 .small-box {
@@ -135,26 +136,13 @@ main {
 	margin-bottom: 10px;
 }
 
-#korkea
+.ruuhkamittari
 {
 margin-bottom: 80px;
-margin-left: 50px;
+margin-left: 25px;
 
 }
 
-#keskiverto
-{
-	margin-bottom: 80px;
-	margin-left: 50px;
-
-
-}
-
-#matala
-{
-	margin-bottom: 80px;
-	margin-left: 50px;
-}
 
 
  .mittari {
