@@ -21,35 +21,44 @@
 
                 <div class="inner-box">
                 
-                        <%Random rnd = new Random();
-      			int autojenlukumaara = rnd.Next(0, 1201); %>
+                    <form id="form1" runat="server" method="post" action="Poliisinettisivu.aspx">
+  			        <h2>Sijainti 1</h2>
 
-		<form id="form1" runat="server" method="post" action="Poliisinettisivu.aspx">
-    			<h2>Sijainti 1</h2>
-
-			    <input class="sijainti" type="submit" value="Sijainti 1.1" </input>
-			    <input class="sijainti" type="submit" value="Sijainti 1.2" </input>
-			    <input class="sijainti" type="submit" value="Sijainti 1.3" </input>
+	            <input class="sijainti" type="submit" value="Sijainti 1.1" />
+	            <input class="sijainti" type="submit" value="Sijainti 1.2" />
+	            <input class="sijainti" type="submit" value="Sijainti 1.3" />
 	
-			<h2>Sijainti 2</h2>
-			
-			    <input class="sijainti" type="submit" value="Sijainti 2.1" </input>
-			    <input class="sijainti" type="submit" value="Sijainti 2.2" </input>
-			    <input class="sijainti" type="submit" value="Sijainti 2.3" </input>
-			
-			<h2>Sijainti 3</h2>
-			
-			    <input class="sijainti" type="submit" value="Sijainti 2.1" </input>
-			    <input class="sijainti" type="submit" value="Sijainti 2.2" </input>
-			    <input class="sijainti" type="submit" value="Sijainti 2.3" </input>
+	        <h2>Sijainti 2</h2>
+	
+	            <input class="sijainti" type="submit" value="Sijainti 2.1" />
+	            <input class="sijainti" type="submit" value="Sijainti 2.2" />
+	            <input class="sijainti" type="submit" value="Sijainti 2.3" />
+	
+	        <h2>Sijainti 3</h2>
+	
+	            <input class="sijainti" type="submit" value="Sijainti 2.1" />
+	            <input class="sijainti" type="submit" value="Sijainti 2.2" />
+	            <input class="sijainti" type="submit" value="Sijainti 2.3" />
+            </form>
+                        <!-- Tästä painettaessa tieto hakeutuu valitun sijainnin perusteella, ja mittarit näyttävät sen -->
                 </div>
             </div>
     
             <div class="box right">
                 <div class="inner-box">
                 <h2 align="left">Sijainti</h2>
-				<p id="pvm"> Päivämäärä </p>
-				<p id="klo"> Kellonaika </p>
+				<p id="pvm"> 
+                    <%
+                      Response.Write(DateTime.Now.Date.ToShortDateString());
+                    %> 
+				</p>
+				<p id="klo">
+                    <%
+                        Response.Write(DateTime.Now.ToString("HH:mm"));
+
+
+                    %>
+				</p>
 
                 <!-- Matala = 500 autoa/h       -->
                 <!-- Keksiverto = 1000 autoa/h  -->
@@ -57,25 +66,29 @@
                 <!-- Ruuhka > 2000 autoa/h      -->
                 
                 <div class="mittari">
-                <%Response.Write(autojenlukumaara); %>    
-		<!-- Tämän pitäisi muuttua sijaintia vaihtaessa-->
+                    <%
+                        string mittarikuva;
+                        Nappulafunktio1h();
+                    %> <!-- Tämän pitäisi muuttua sijaintia vaihtaessa-->
                 </div>
 
-                <img class="ruuhkamittari" src="materiaalit/korkea.svg" alt="korkea"> <!-- Kuvan pitäisi vastata autojen määrää -->
+                <img class="ruuhkamittari" src="materiaalit/<%Response.Write(mittarikuva);%>" alt="mittari"> <!-- Kuvan pitäisi vastata autojen määrää -->
                 
                 <div class="mittari">
-                <%Response.Write(autojenlukumaara); %>
-		<!-- Tämän pitäisi muuttua sijaintia vaihtaessa-->
+                    <%
+                        Nappulafunktio3h();
+                    %> <!-- Tämän pitäisi muuttua sijaintia vaihtaessa-->
                 </div>
                 
-                <div> <img class="ruuhkamittari"src="materiaalit/keskiverto.svg" alt="keskiverto"></div> <!-- Kuvan pitäisi vastata autojen määrää -->
+                <div> <img class="ruuhkamittari"src="materiaalit/<%Response.Write(mittarikuva);%>" alt="mittari"></div> <!-- Kuvan pitäisi vastata autojen määrää -->
 
                 <div class="mittari">
-        	<%Response.Write(autojenlukumaara); %>
-		<!-- Tämän pitäisi muuttua sijaintia vaihtaessa-->
+                    <%
+                        Nappulafunktio1pv();
+                    %> <!-- Tämän pitäisi muuttua sijaintia vaihtaessa-->
                 </div>
                 
-                <div> <img class="ruuhkamittari"src="materiaalit/matala.svg" alt="matala"></div> <!-- Kuvan pitäisi vastata autojen määrää -->
+                <div> <img class="ruuhkamittari"src="materiaalit/<%Response.Write(mittarikuva);%>" alt="mittari"></div> <!-- Kuvan pitäisi vastata autojen määrää -->
                 </div>
 
               </div>
@@ -86,7 +99,7 @@
 
     <footer>
         <p class="lfooter">
-            Sovelluksen toteuttajan yhteystiedot sekä palaute lomakkeet linkki ja jeejee
+            Palaute: jörnijät@gmail.com
             
         </p>
     
@@ -96,3 +109,74 @@
     </footer>
 </body>
 </html>
+
+<% 
+    void Nappulafunktio1h()
+    {
+        mittarikuva = null;
+        Random rnd = new Random();
+        int num = rnd.Next(2001); // generoidaan fake dataa.
+        Response.Write(num + " autoa / 1h");
+        if (num >= 0 && num <= 500) {
+            mittarikuva = "matala.svg";
+        }
+        else if (num >= 501 && num <= 1000) {
+            mittarikuva = "keskiverto.svg";
+        }
+        else if (num >= 1001 && num <= 1500) {
+            mittarikuva = "korkea.svg"; 
+        }
+        else if (num >= 1501 && num <= 2000) {
+            mittarikuva = "ruuhka.svg";
+        }
+        else {
+            mittarikuva = "korkea.svg";
+        }
+
+    }
+
+    void Nappulafunktio3h()
+    {
+        Random rnd = new Random();
+        int num2 = rnd.Next(1501); // generoidaan fake dataa.
+        Response.Write(num2 * 3 + " autoa / 3h");
+        if (num2 >= 0 && num2 <= 500) {
+            mittarikuva = "matala.svg";
+        }
+        else if (num2 >= 501 && num2 <= 1000) {
+            mittarikuva = "keskiverto.svg";
+        }
+        else if (num2 >= 1001 && num2 <= 1500) {
+            mittarikuva = "korkea.svg"; 
+        }
+        else if (num2 >= 1501 && num2 <= 2000) {
+            mittarikuva = "ruuhka.svg";
+        }
+        else {
+            mittarikuva = "korkea.svg";
+        }
+    }
+
+    void Nappulafunktio1pv()
+    {
+        Random rnd = new Random();
+        int num3 = rnd.Next(1501); // generoidaan fake dataa.
+        Response.Write(num3 * 24 + " autoa / 1pv");
+        if (num3 >= 0 && num3 <= 500) {
+            mittarikuva = "matala.svg";
+        }
+        else if (num3 >= 501 && num3 <= 1000) {
+            mittarikuva = "keskiverto.svg";
+        }
+        else if (num3 >= 1001 && num3 <= 1500) {
+            mittarikuva = "korkea.svg"; 
+        }
+        else if (num3 >= 1501 && num3 <= 2000) {
+            mittarikuva = "ruuhka.svg";
+        }
+        else {
+            mittarikuva = "korkea.svg";
+        }
+    }
+
+%>
