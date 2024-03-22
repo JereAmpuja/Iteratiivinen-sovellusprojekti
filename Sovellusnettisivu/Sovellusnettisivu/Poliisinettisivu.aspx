@@ -57,19 +57,22 @@
                 <!-- Ruuhka > 2000 autoa/h      -->
                 
                 <div class="mittari">
-                    250 autoa / 1H <!-- Tämän pitäisi muuttua sijaintia vaihtaessa-->
+                <%Response.Write(autojenlukumaara); %>    
+		<!-- Tämän pitäisi muuttua sijaintia vaihtaessa-->
                 </div>
 
                 <img class="ruuhkamittari" src="materiaalit/korkea.svg" alt="korkea"> <!-- Kuvan pitäisi vastata autojen määrää -->
                 
                 <div class="mittari">
-                    602 autoa / 3H <!-- Tämän pitäisi muuttua sijaintia vaihtaessa-->
+                <%Response.Write(autojenlukumaara); %>
+		<!-- Tämän pitäisi muuttua sijaintia vaihtaessa-->
                 </div>
                 
                 <div> <img class="ruuhkamittari"src="materiaalit/keskiverto.svg" alt="keskiverto"></div> <!-- Kuvan pitäisi vastata autojen määrää -->
 
                 <div class="mittari">
-                    2023 autoa / 1PV <!-- Tämän pitäisi muuttua sijaintia vaihtaessa-->
+        	<%Response.Write(autojenlukumaara); %>
+		<!-- Tämän pitäisi muuttua sijaintia vaihtaessa-->
                 </div>
                 
                 <div> <img class="ruuhkamittari"src="materiaalit/matala.svg" alt="matala"></div> <!-- Kuvan pitäisi vastata autojen määrää -->
