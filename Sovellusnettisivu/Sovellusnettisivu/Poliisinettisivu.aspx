@@ -21,23 +21,27 @@
 
                 <div class="inner-box">
                 
-                    <h2>Sijainti 1</h2>
-                    <button class="sijainti">Sijainti 1.1</button> <!-- Tämän sijainnin takana on tietty määrä autoja -->
-                    <button class="sijainti">Sijainti 1.2</button> <!-- Tämän sijainnin takana on tietty määrä autoja -->
-                    <button class="sijainti">Sijainti 1.3</button> <!-- Tämän sijainnin takana on tietty määrä autoja -->
-                
-                    <h2>Sijainti 2</h2>
-                    <button class="sijainti">Sijainti 2.1</button> <!-- Tämän sijainnin takana on tietty määrä autoja -->
-                    <button class="sijainti">Sijainti 2.2</button> <!-- Tämän sijainnin takana on tietty määrä autoja -->
-                    <button class="sijainti">Sijainti 2.3</button> <!-- Tämän sijainnin takana on tietty määrä autoja -->
-                
-                    <h2>Sijainti 3</h2>
-                    <button class="sijainti">Sijainti 3.1</button> <!-- Tämän sijainnin takana on tietty määrä autoja -->
-                    <button class="sijainti">Sijainti 3.2</button> <!-- Tämän sijainnin takana on tietty määrä autoja -->
-                    <button class="sijainti">Sijainti 3.3</button> <!-- Tämän sijainnin takana on tietty määrä autoja -->
+                        <%Random rnd = new Random();
+      			int autojenlukumaara = rnd.Next(0, 1201); %>
 
-                    <button class="tieto">Hae tieto</button> 
-                        <!-- Tästä painettaessa tieto hakeutuu valitun sijainnin perusteella, ja mittarit näyttävät sen -->
+		<form id="form1" runat="server" method="post" action="Poliisinettisivu.aspx">
+    			<h2>Sijainti 1</h2>
+
+			    <input class="sijainti" type="submit" value="Sijainti 1.1" </input>
+			    <input class="sijainti" type="submit" value="Sijainti 1.2" </input>
+			    <input class="sijainti" type="submit" value="Sijainti 1.3" </input>
+	
+			<h2>Sijainti 2</h2>
+			
+			    <input class="sijainti" type="submit" value="Sijainti 2.1" </input>
+			    <input class="sijainti" type="submit" value="Sijainti 2.2" </input>
+			    <input class="sijainti" type="submit" value="Sijainti 2.3" </input>
+			
+			<h2>Sijainti 3</h2>
+			
+			    <input class="sijainti" type="submit" value="Sijainti 2.1" </input>
+			    <input class="sijainti" type="submit" value="Sijainti 2.2" </input>
+			    <input class="sijainti" type="submit" value="Sijainti 2.3" </input>
                 </div>
             </div>
     
