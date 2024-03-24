@@ -161,8 +161,9 @@ margin-left: -5px;
 #pvm
 {
 	font-size: 24px;
-	margin-top: -45px;
+	margin-top: -47px;
 	text-align: right;
+	font-weight: bold;
 }
 
 #klo
@@ -170,4 +171,11 @@ margin-left: -5px;
 	font-size: 24px;
 	margin-top: -10px;
 	text-align: right;
+	font-weight: bold;
+}
+
+#sijainti
+{
+margin-top: -0px;
+
 }

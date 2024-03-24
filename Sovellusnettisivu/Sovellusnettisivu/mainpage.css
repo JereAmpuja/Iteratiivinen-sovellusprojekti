@@ -1,0 +1,172 @@
+﻿body {
+    font-family: Arial;
+    margin: 0;
+    padding: 0;
+    font-family:;
+    background-color: #f2f2f2;
+}
+
+header {
+    width: 100%;
+    background-color: #06377B;
+    color: white;
+    z-index: 100;
+    float: left;
+    height: 120px;
+}
+
+#headerteksti {
+    font-weight: bold;
+    font-size: 30px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 90px;
+    margin-right: 205px;
+}
+
+#headerlogo {
+    text-align: left;
+    height: 100%;
+    float: left;
+}
+
+footer {
+    background-color: #06377B;
+    height: 50px;
+    margin-top: 50px;
+    color: white;
+    padding-bottom: 30px;
+    width: 100%;
+    height: 100px;
+}
+
+.rfooter {
+    float: right;
+    text-align: right;
+    font-size: 24px;
+    padding-right: 30px;
+    padding-top: 30px;
+}
+
+.lfooter {
+    float: left;
+    text-align: left;
+    font-size: 24px;
+    padding-left: 30px;
+    padding-top: 30px;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: -50px;
+}
+
+.box {
+    float: left;
+    padding: 20px;
+}
+
+.left {
+    background-color: #06377B;
+    width: 257px;
+    height: 716px;
+    margin-right: 15px;
+    color: #f1f1f1;
+}
+
+.right {
+    background-color: #06377B;
+    width: 630px;
+    height: 716px;
+    color: #f1f1f1;
+}
+
+.sijainti {
+    display: block;
+    padding: 7px;
+    color: black;
+    background-color: #f1f1f1;
+    font-size: 24px;
+    width: 100%;
+    margin-top: 10px;
+    text-align: left;
+}
+
+.tieto {
+    display: block;
+    margin-top: 20px;
+    padding: 8px 15px;
+    color: #f1f1f1;
+    background-color: #182538;
+    font-size: 30px;
+    width: 100%;
+    text-align: center;
+}
+
+    .tieto:hover {
+        background-color: #182538;
+        color: #f1f1f1;
+        border: solid white 2px;
+    }
+
+.sijainti:hover {
+    background-color: #182538;
+    color: #f1f1f1;
+    border: solid white 2px;
+}
+
+.sijainti:active {
+    background-color: #182538;
+    color: #f1f1f1;
+}
+
+.inner-box {
+    margin-top: -20px;
+}
+
+.small-box {
+    background-color: #c1c1c1;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.ruuhkamittari {
+    margin-bottom: 50px;
+    margin-left: -5px;
+}
+
+
+
+.mittari {
+    background-color: #182538;
+    width: 178px;
+    padding: 6px;
+    text-align: center;
+    border: 5px solid #f2f2f2;
+    margin-top: -10px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+#pvm {
+    font-size: 24px;
+    margin-top: -45px;
+    text-align: right;
+}
+
+#klo {
+    font-size: 24px;
+    margin-top: -10px;
+    text-align: right;
+}
