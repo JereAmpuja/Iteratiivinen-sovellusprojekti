@@ -22,23 +22,23 @@
                 <div class="inner-box">
                 
                     <form id="form1" runat="server" method="post" action="Poliisinettisivu.aspx">
-  			        <h2>Sijainti 1</h2>
+  			        <h2>Valtatie 4</h2>
 
-	            <input class="sijainti" type="submit" value="Sijainti 1.1" />
-	            <input class="sijainti" type="submit" value="Sijainti 1.2" />
-	            <input class="sijainti" type="submit" value="Sijainti 1.3" />
+	            <input class="sijainti" type="submit" value="Mäntsälä, Levanto" />
+	            <input class="sijainti" type="submit" value="Mäntsälä, Hakkari" />
+	            <input class="sijainti" type="submit" value="Lahti, Lotila" />
 	
-	        <h2>Sijainti 2</h2>
+	        <h2>Valtatie 12</h2>
 	
-	            <input class="sijainti" type="submit" value="Sijainti 2.1" />
-	            <input class="sijainti" type="submit" value="Sijainti 2.2" />
-	            <input class="sijainti" type="submit" value="Sijainti 2.3" />
+	            <input class="sijainti" type="submit" value="Lahti, Hollola" />
+	            <input class="sijainti" type="submit" value="Hämeenlinna, Hauho" />
+	            <input class="sijainti" type="submit" value="Kangasala, Suorama" />
 	
-	        <h2>Sijainti 3</h2>
+	        <h2>E75</h2>
 	
-	            <input class="sijainti" type="submit" value="Sijainti 2.1" />
-	            <input class="sijainti" type="submit" value="Sijainti 2.2" />
-	            <input class="sijainti" type="submit" value="Sijainti 2.3" />
+	            <input class="sijainti" type="submit" value="Joutsa, Harvastensuo" />
+	            <input class="sijainti" type="submit" value="Heinola, Lusi" />
+	            <input class="sijainti" type="submit" value="Hartola" />
             </form>
                         <!-- Tästä painettaessa tieto hakeutuu valitun sijainnin perusteella, ja mittarit näyttävät sen -->
                 </div>
