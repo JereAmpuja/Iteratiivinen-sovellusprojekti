@@ -24,21 +24,21 @@
                     <form id="form1" runat="server" method="post" action="Poliisinettisivu.aspx">
   			        <h2>Valtatie 4</h2>
 
-	            <input class="sijainti" type="submit" value="Mäntsälä, Levanto" />
-	            <input class="sijainti" type="submit" value="Mäntsälä, Hakkari" />
-	            <input class="sijainti" type="submit" value="Lahti, Lotila" />
+	            <input name="location" class="sijainti" type="submit" value="Mäntsälä, Levanto" />
+	            <input name="location" class="sijainti" type="submit" value="Mäntsälä, Hakkari" />
+	            <input name="location" class="sijainti" type="submit" value="Lahti, Lotila" />
 	
 	        <h2>Valtatie 12</h2>
 	
-	            <input class="sijainti" type="submit" value="Lahti, Hollola" />
-	            <input class="sijainti" type="submit" value="Hämeenlinna, Hauho" />
-	            <input class="sijainti" type="submit" value="Kangasala, Suorama" />
+	            <input name="location" class="sijainti" type="submit" value="Lahti, Hollola" />
+	            <input name="location" class="sijainti" type="submit" value="Hämeenlinna, Hauho" />
+	            <input name="location" class="sijainti" type="submit" value="Kangasala, Suorama" />
 	
 	        <h2>E75</h2>
 	
-	            <input class="sijainti" type="submit" value="Joutsa, Harvastensuo" />
-	            <input class="sijainti" type="submit" value="Heinola, Lusi" />
-	            <input class="sijainti" type="submit" value="Hartola" />
+	            <input name="location" class="sijainti" type="submit" value="Joutsa, Harvastensuo" />
+	            <input name="location" class="sijainti" type="submit" value="Heinola, Lusi" />
+	            <input name="location" class="sijainti" type="submit" value="Hartola" />
             </form>
                         <!-- Tästä painettaessa tieto hakeutuu valitun sijainnin perusteella, ja mittarit näyttävät sen -->
                 </div>
@@ -65,9 +65,49 @@
                 
                 <div class="mittari">
                     <%
+			if (Request.Form["location"] != null)
+			{
+			    string location = Request.Form["location"];
+			
+			    if (location == "Mäntsälä, Levanto")
+			    {
+			        Response.Write(tietohaku("23142"));
+			    }
+			    else if (location == "Mäntsälä, Hakkari")
+			    {
+			        Response.Write(tietohaku("23110"));
+			    }
+			    else if (location == "Lahti, Lotila")
+			    {
+			        Response.Write(tietohaku("23470"));
+			    }
+			    else if (location == "Lahti, Hollola")
+			    {
+			        Response.Write(tietohaku("23407"));
+			    }
+			    else if (location == "Hämeenlinna, Hauho")
+			    {
+			        Response.Write(tietohaku("23426"));
+			    }
+			    else if (location == "Kangasala, Suorama")
+			    {
+			        Response.Write(tietohaku("23431"));
+			    }
+			    else if (location == "Joutsa, Harvastensuo")
+			    {
+			        Response.Write(tietohaku("23928"));
+			    }
+			    else if (location == "Heinola, Lusi")
+			    {
+			        Response.Write(tietohaku("23442"));
+			    }
+			    else if (location == "Hartola")
+			    {
+			        Response.Write(tietohaku("23623"));
+			    }
+			}
                         string mittarikuva;
                         Nappulafunktio1h();
-                        Response.Write(tietohaku("23470"));
                     %> <!-- Tämän pitäisi muuttua sijaintia vaihtaessa-->
                 </div>
 
@@ -144,7 +184,7 @@
         mittarikuva = null;
         Random rnd = new Random();
         int num = rnd.Next(2001); // generoidaan fake dataa.
-        Response.Write(num + " autoa / 1h");
+        Response.Write(" autoa / 1h");
         if (num >= 0 && num <= 500) {
             mittarikuva = "matala.svg";
         }
