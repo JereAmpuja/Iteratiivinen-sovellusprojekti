@@ -36,9 +36,9 @@
 	
 	        <h2>Sijainti 3</h2>
 	
-	            <input class="sijainti" type="submit" value="Sijainti 2.1" />
-	            <input class="sijainti" type="submit" value="Sijainti 2.2" />
-	            <input class="sijainti" type="submit" value="Sijainti 2.3" />
+	            <input class="sijainti" type="submit" value="Sijainti 3.1" />
+	            <input class="sijainti" type="submit" value="Sijainti 3.2" />
+	            <input class="sijainti" type="submit" value="Sijainti 3.3" />
             </form>
                         <!-- Tästä painettaessa tieto hakeutuu valitun sijainnin perusteella, ja mittarit näyttävät sen -->
                 </div>
