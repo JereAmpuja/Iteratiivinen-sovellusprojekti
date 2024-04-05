@@ -1,10 +1,10 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Poliisinettisivu.aspx.cs" Inherits="Sovellusnettisivu.Poliisinettisivu" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Poliisinettisivu.aspx.cs" Inherits="Sovellusnettisivu.Poliisinettisivu" %>
 
 <!DOCTYPE HTML>
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nettisiv</title>
+    <title>Nettisivu</title>
     <link rel="stylesheet" href="mainpage.css" />
 </head>
 
@@ -36,9 +36,9 @@
 	
 	        <h2>E75</h2>
 	
-	            <input class="sijainti" type="submit" value="Sijainti 2.1" />
-	            <input class="sijainti" type="submit" value="Sijainti 2.2" />
-	            <input class="sijainti" type="submit" value="Sijainti 2.3" />
+	            <input name="location" class="sijainti" type="submit" value="Joutsa, Harvastensuo" />
+	            <input name="location" class="sijainti" type="submit" value="Heinola, Lusi" />
+	            <input name="location" class="sijainti" type="submit" value="Hartola" />
             </form>
                         <!-- Tästä painettaessa tieto hakeutuu valitun sijainnin perusteella, ja mittarit näyttävät sen -->
                 </div>
