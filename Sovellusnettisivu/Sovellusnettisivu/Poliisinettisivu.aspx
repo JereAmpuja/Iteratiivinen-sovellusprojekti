@@ -36,9 +36,9 @@
 	
 	        <h2>E75</h2>
 	
-	            <input name="location" class="sijainti" type="submit" value="Joutsa, Harvastensuo" />
-	            <input name="location" class="sijainti" type="submit" value="Heinola, Lusi" />
-	            <input name="location" class="sijainti" type="submit" value="Hartola" />
+		        <input name="location" class="sijainti" type="submit" value="Joutsa, Harvastensuo" />
+			<input name="location" class="sijainti" type="submit" value="Heinola, Lusi" />
+			<input name="location" class="sijainti" type="submit" value="Hartola" />
             </form>
                         <!-- Tästä painettaessa tieto hakeutuu valitun sijainnin perusteella, ja mittarit näyttävät sen -->
                 </div>
