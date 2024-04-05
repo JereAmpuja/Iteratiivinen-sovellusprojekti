@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Poliisinettisivu.aspx.cs" Inherits="Sovellusnettisivu.Poliisinettisivu" %>
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Poliisinettisivu.aspx.cs" Inherits="Sovellusnettisivu.Poliisinettisivu" %>
 
 <!DOCTYPE HTML>
 <html>
@@ -22,23 +22,23 @@
                 <div class="inner-box">
                 
                     <form id="form1" runat="server" method="post" action="Poliisinettisivu.aspx">
-  			        <h2>Sijainti 1</h2>
+  			        <h2>Valtatie 4</h2>
 
-	            <input class="sijainti" type="submit" value="Sijainti 1.1" />
-	            <input class="sijainti" type="submit" value="Sijainti 1.2" />
-	            <input class="sijainti" type="submit" value="Sijainti 1.3" />
+	            <input name="location" class="sijainti" type="submit" value="Mäntsälä, Levanto" />
+	            <input name="location" class="sijainti" type="submit" value="Mäntsälä, Hakkari" />
+	            <input name="location" class="sijainti" type="submit" value="Lahti, Lotila" />
 	
-	        <h2>Sijainti 2</h2>
+	        <h2>Valtatie 12</h2>
+	
+	            <input name="location" class="sijainti" type="submit" value="Lahti, Hollola" />
+	            <input name="location" class="sijainti" type="submit" value="Hämeenlinna, Hauho" />
+	            <input name="location" class="sijainti" type="submit" value="Kangasala, Suorama" />
+	
+	        <h2>E75</h2>
 	
 	            <input class="sijainti" type="submit" value="Sijainti 2.1" />
 	            <input class="sijainti" type="submit" value="Sijainti 2.2" />
 	            <input class="sijainti" type="submit" value="Sijainti 2.3" />
-	
-	        <h2>Sijainti 3</h2>
-	
-	            <input class="sijainti" type="submit" value="Sijainti 3.1" />
-	            <input class="sijainti" type="submit" value="Sijainti 3.2" />
-	            <input class="sijainti" type="submit" value="Sijainti 3.3" />
             </form>
                         <!-- Tästä painettaessa tieto hakeutuu valitun sijainnin perusteella, ja mittarit näyttävät sen -->
                 </div>
@@ -55,8 +55,6 @@
 				<p id="klo">
                     <%
                         Response.Write(DateTime.Now.ToString("HH:mm"));
-
-
                     %>
 				</p>
 
@@ -67,6 +65,47 @@
                 
                 <div class="mittari">
                     <%
+			if (Request.Form["location"] != null)
+			{
+			    string location = Request.Form["location"];
+			
+			    if (location == "Mäntsälä, Levanto")
+			    {
+			        Response.Write(tietohaku("23142"));
+			    }
+			    else if (location == "Mäntsälä, Hakkari")
+			    {
+			        Response.Write(tietohaku("23110"));
+			    }
+			    else if (location == "Lahti, Lotila")
+			    {
+			        Response.Write(tietohaku("23470"));
+			    }
+			    else if (location == "Lahti, Hollola")
+			    {
+			        Response.Write(tietohaku("23407"));
+			    }
+			    else if (location == "Hämeenlinna, Hauho")
+			    {
+			        Response.Write(tietohaku("23426"));
+			    }
+			    else if (location == "Kangasala, Suorama")
+			    {
+			        Response.Write(tietohaku("23431"));
+			    }
+			    else if (location == "Joutsa, Harvastensuo")
+			    {
+			        Response.Write(tietohaku("23928"));
+			    }
+			    else if (location == "Heinola, Lusi")
+			    {
+			        Response.Write(tietohaku("23442"));
+			    }
+			    else if (location == "Hartola")
+			    {
+			        Response.Write(tietohaku("23623"));
+			    }
+			}
                         string mittarikuva;
                         Nappulafunktio1h();
                     %> <!-- Tämän pitäisi muuttua sijaintia vaihtaessa-->
@@ -111,12 +150,41 @@
 </html>
 
 <% 
+     int tietohaku(string x)
+    {
+        System.IO.StringWriter writer = new System.IO.StringWriter();
+        System.Net.HttpWebRequest myRequest = (System.Net.HttpWebRequest)System.Net.WebRequest.Create($"http://tie.digitraffic.fi/api/tms/v1/stations/" + x + "/data");
+        myRequest.AutomaticDecompression = System.Net.DecompressionMethods.GZip | System.Net.DecompressionMethods.Deflate;
+        System.Net.WebResponse response = myRequest.GetResponse();
+
+        char[] määrä = new char[4];
+
+        System.IO.Stream dataStream = response.GetResponseStream();
+
+        System.IO.StreamReader reader = new System.IO.StreamReader(dataStream);
+
+        string responseFromServer = reader.ReadToEnd();
+        int valueposition = responseFromServer.IndexOf(@"value");
+        responseFromServer.CopyTo(valueposition + 8, määrä, 0, määrä.Length);
+
+        string palautus = "";
+        for (int i = 0; i < määrä.Length; i++)
+        {
+            palautus += määrä[i];
+        }
+
+        int palautus1 = Convert.ToInt32(palautus);
+
+        return palautus1;
+
+    }
+
     void Nappulafunktio1h()
     {
         mittarikuva = null;
         Random rnd = new Random();
         int num = rnd.Next(2001); // generoidaan fake dataa.
-        Response.Write(num + " autoa / 1h");
+        Response.Write(" autoa / 1h");
         if (num >= 0 && num <= 500) {
             mittarikuva = "matala.svg";
         }
@@ -124,7 +192,7 @@
             mittarikuva = "keskiverto.svg";
         }
         else if (num >= 1001 && num <= 1500) {
-            mittarikuva = "korkea.svg"; 
+            mittarikuva = "korkea.svg";
         }
         else if (num >= 1501 && num <= 2000) {
             mittarikuva = "ruuhka.svg";
@@ -147,7 +215,7 @@
             mittarikuva = "keskiverto.svg";
         }
         else if (num2 >= 1001 && num2 <= 1500) {
-            mittarikuva = "korkea.svg"; 
+            mittarikuva = "korkea.svg";
         }
         else if (num2 >= 1501 && num2 <= 2000) {
             mittarikuva = "ruuhka.svg";
@@ -169,7 +237,7 @@
             mittarikuva = "keskiverto.svg";
         }
         else if (num3 >= 1001 && num3 <= 1500) {
-            mittarikuva = "korkea.svg"; 
+            mittarikuva = "korkea.svg";
         }
         else if (num3 >= 1501 && num3 <= 2000) {
             mittarikuva = "ruuhka.svg";
