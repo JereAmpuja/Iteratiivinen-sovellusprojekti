@@ -2,7 +2,4 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
-/Sovellusnettisivu/.vs/Sovellusnettisivu/FileContentIndex/d98f839d-9602-452b-bbfb-e10c1fefa1d3.vsidx
-/Sovellusnettisivu/.vs/Sovellusnettisivu/FileContentIndex/64587d53-9973-47c4-864e-078363211367.vsidx
-/Sovellusnettisivu/.vs/Sovellusnettisivu/FileContentIndex/c6521ef4-181a-47f6-8f3b-de754da15997.vsidx
-/Sovellusnettisivu/.vs/Sovellusnettisivu/FileContentIndex/2b83add9-c7fc-4448-964f-8c638a1a49d8.vsidx
+/.gitignore
