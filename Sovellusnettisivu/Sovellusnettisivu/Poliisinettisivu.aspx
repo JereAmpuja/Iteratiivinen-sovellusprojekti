@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Poliisinettisivu.aspx.cs" Inherits="Sovellusnettisivu.Poliisinettisivu" %>
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Poliisinettisivu.aspx.cs" Inherits="Sovellusnettisivu.Poliisinettisivu" %>
 
 <!DOCTYPE HTML>
 <html>
@@ -55,8 +55,6 @@
 				<p id="klo">
                     <%
                         Response.Write(DateTime.Now.ToString("HH:mm"));
-
-
                     %>
 				</p>
 
@@ -69,6 +67,7 @@
                     <%
                         string mittarikuva;
                         Nappulafunktio1h();
+                        Response.Write(tietohaku("23470"));
                     %> <!-- Tämän pitäisi muuttua sijaintia vaihtaessa-->
                 </div>
 
@@ -111,6 +110,35 @@
 </html>
 
 <% 
+     int tietohaku(string x)
+    {
+        System.IO.StringWriter writer = new System.IO.StringWriter();
+        System.Net.HttpWebRequest myRequest = (System.Net.HttpWebRequest)System.Net.WebRequest.Create($"http://tie.digitraffic.fi/api/tms/v1/stations/" + x + "/data");
+        myRequest.AutomaticDecompression = System.Net.DecompressionMethods.GZip | System.Net.DecompressionMethods.Deflate;
+        System.Net.WebResponse response = myRequest.GetResponse();
+
+        char[] määrä = new char[4];
+
+        System.IO.Stream dataStream = response.GetResponseStream();
+
+        System.IO.StreamReader reader = new System.IO.StreamReader(dataStream);
+
+        string responseFromServer = reader.ReadToEnd();
+        int valueposition = responseFromServer.IndexOf(@"value");
+        responseFromServer.CopyTo(valueposition + 8, määrä, 0, määrä.Length);
+
+        string palautus = "";
+        for (int i = 0; i < määrä.Length; i++)
+        {
+            palautus += määrä[i];
+        }
+
+        int palautus1 = Convert.ToInt32(palautus);
+
+        return palautus1;
+
+    }
+
     void Nappulafunktio1h()
     {
         mittarikuva = null;
@@ -124,7 +152,7 @@
             mittarikuva = "keskiverto.svg";
         }
         else if (num >= 1001 && num <= 1500) {
-            mittarikuva = "korkea.svg"; 
+            mittarikuva = "korkea.svg";
         }
         else if (num >= 1501 && num <= 2000) {
             mittarikuva = "ruuhka.svg";
@@ -147,7 +175,7 @@
             mittarikuva = "keskiverto.svg";
         }
         else if (num2 >= 1001 && num2 <= 1500) {
-            mittarikuva = "korkea.svg"; 
+            mittarikuva = "korkea.svg";
         }
         else if (num2 >= 1501 && num2 <= 2000) {
             mittarikuva = "ruuhka.svg";
@@ -169,7 +197,7 @@
             mittarikuva = "keskiverto.svg";
         }
         else if (num3 >= 1001 && num3 <= 1500) {
-            mittarikuva = "korkea.svg"; 
+            mittarikuva = "korkea.svg";
         }
         else if (num3 >= 1501 && num3 <= 2000) {
             mittarikuva = "ruuhka.svg";
