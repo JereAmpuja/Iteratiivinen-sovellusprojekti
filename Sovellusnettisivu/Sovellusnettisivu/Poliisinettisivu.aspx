@@ -36,101 +36,24 @@
 	
 	        <h2>E75</h2>
 	
-		        <input name="location" class="sijainti" type="submit" value="Joutsa, Harvastensuo" />
+		    <input name="location" class="sijainti" type="submit" value="Joutsa, Harvastensuo" />
 			<input name="location" class="sijainti" type="submit" value="Heinola, Lusi" />
 			<input name="location" class="sijainti" type="submit" value="Hartola" />
+
             </form>
-                        <!-- Tästä painettaessa tieto hakeutuu valitun sijainnin perusteella, ja mittarit näyttävät sen -->
+
                 </div>
             </div>
     
-            <div class="box right">
-                <div class="inner-box">
-                <h2 align="left">Sijainti</h2>
-				<p id="pvm"> 
-                    <%
-                      Response.Write(DateTime.Now.Date.ToShortDateString());
-                    %> 
-				</p>
-				<p id="klo">
-                    <%
-                        Response.Write(DateTime.Now.ToString("HH:mm"));
-                    %>
-				</p>
-
-                <!-- Matala = 500 autoa/h       -->
-                <!-- Keksiverto = 1000 autoa/h  -->
-                <!-- Korkea = 1500 autoa/h      -->
-                <!-- Ruuhka > 2000 autoa/h      -->
-                
-                <div class="mittari">
-                    <%
-			if (Request.Form["location"] != null)
-			{
-			    string location = Request.Form["location"];
-			
-			    if (location == "Mäntsälä, Levanto")
-			    {
-			        Response.Write(tietohaku("23142"));
-			    }
-			    else if (location == "Mäntsälä, Hakkari")
-			    {
-			        Response.Write(tietohaku("23110"));
-			    }
-			    else if (location == "Lahti, Lotila")
-			    {
-			        Response.Write(tietohaku("23470"));
-			    }
-			    else if (location == "Lahti, Hollola")
-			    {
-			        Response.Write(tietohaku("23407"));
-			    }
-			    else if (location == "Hämeenlinna, Hauho")
-			    {
-			        Response.Write(tietohaku("23426"));
-			    }
-			    else if (location == "Kangasala, Suorama")
-			    {
-			        Response.Write(tietohaku("23431"));
-			    }
-			    else if (location == "Joutsa, Harvastensuo")
-			    {
-			        Response.Write(tietohaku("23928"));
-			    }
-			    else if (location == "Heinola, Lusi")
-			    {
-			        Response.Write(tietohaku("23442"));
-			    }
-			    else if (location == "Hartola")
-			    {
-			        Response.Write(tietohaku("23623"));
-			    }
-			}
-                        string mittarikuva;
-                        Nappulafunktio1h();
-                    %> <!-- Tämän pitäisi muuttua sijaintia vaihtaessa-->
-                </div>
-
-                <img class="ruuhkamittari" src="materiaalit/<%Response.Write(mittarikuva);%>" alt="mittari"> <!-- Kuvan pitäisi vastata autojen määrää -->
-                
-                <div class="mittari">
-                    <%
-                        Nappulafunktio3h();
-                    %> <!-- Tämän pitäisi muuttua sijaintia vaihtaessa-->
-                </div>
-                
-                <div> <img class="ruuhkamittari"src="materiaalit/<%Response.Write(mittarikuva);%>" alt="mittari"></div> <!-- Kuvan pitäisi vastata autojen määrää -->
-
-                <div class="mittari">
-                    <%
-                        Nappulafunktio1pv();
-                    %> <!-- Tämän pitäisi muuttua sijaintia vaihtaessa-->
-                </div>
-                
-                <div> <img class="ruuhkamittari"src="materiaalit/<%Response.Write(mittarikuva);%>" alt="mittari"></div> <!-- Kuvan pitäisi vastata autojen määrää -->
-                </div>
-
-              </div>
+            <div class="box right">     
+                <%
+                    if (Request.Form["location"] == null){
+                        Response.Write(etusivuoikeaboxi());
+                    }
+                    if (Request.Form["location"] != null){
+                        Response.Write(oikeaboxi());
+                    }
+                %>
            </div>
             
         
@@ -150,10 +73,172 @@
 </html>
 
 <% 
-     int tietohaku(string x)
+     string etusivuoikeaboxi()
+        {
+        string etusivu =@"
+                        <p id=""pvm2"">" + DateTime.Now.Date.ToShortDateString() + @"</p>
+                        <p id=""klo2"">" + DateTime.Now.ToString("HH:mm") + @"</p>
+                        <div id=""txt"">
+                        <h1>Valitse mittauspiste</h1> 
+                        </div>
+                        ";      
+        return etusivu;
+        }
+
+     string oikeaboxi()
+    {
+ 
+        string htmlCode = @"
+            <div class=""inner-box"">
+                <h2 align=""left"">" + lokaatio() + @"</h2>
+                <p id=""pvm"">" + DateTime.Now.Date.ToShortDateString() + @"</p>
+                <p id=""klo"">" + DateTime.Now.ToString("HH:mm") + @"</p>
+                <div class=""mittari"">" + valinta() + @" / 1H</div>
+                <img class=""ruuhkamittari"" src=""materiaalit/" + ruuhkamittari() + @""" alt=""mittari"">
+                <div class=""mittari"">" + valinta() * 3 + @" / 3H</div>
+                <div> <img class=""ruuhkamittari""src=""materiaalit/" + ruuhkamittari() + @""" alt=""mittari""></div>
+                <div class=""mittari"">" + valinta() * 5 + @" / 5H</div>
+                <div> <img class=""ruuhkamittari""src=""materiaalit/" + ruuhkamittari() + @""" alt=""mittari""></div>
+            </div>";
+
+        return htmlCode;
+    }
+
+    string ruuhkamittari()
+    {
+        string mittarikuva = null;
+        if (valinta() >= 0 && valinta() <= 500) {
+            mittarikuva = "matala.svg";
+        }
+        else if (valinta() >= 501 && valinta() <= 1000) {
+            mittarikuva = "keskiverto.svg";
+        }
+        else if (valinta() >= 1001 && valinta() <= 1500) {
+            mittarikuva = "korkea.svg";
+        }
+        else if (valinta() >= 1501 && valinta() <= 2000) {
+            mittarikuva = "ruuhka.svg";
+        }
+        else {
+            mittarikuva = "korkea.svg";
+        }
+
+        return mittarikuva;
+    }
+
+    int valinta()
+    {
+
+        if (Request.Form["location"] != null)
+        {
+            string location = Request.Form["location"];
+
+            if (location == "Mäntsälä, Levanto")
+            {
+                return tietohaku("23142");
+            }
+            else if (location == "Mäntsälä, Hakkari")
+            {
+                return tietohaku("23110");
+            }
+            else if (location == "Lahti, Lotila")
+            {
+                return tietohaku("23470");
+            }
+            else if (location == "Lahti, Hollola")
+            {
+                return tietohaku("23407");
+            }
+            else if (location == "Hämeenlinna, Hauho")
+            {
+                return tietohaku("23426");
+            }
+            else if (location == "Kangasala, Suorama")
+            {
+                return tietohaku("23431");
+            }
+            else if (location == "Joutsa, Harvastensuo")
+            {
+                return tietohaku("23928");
+            }
+            else if (location == "Heinola, Lusi")
+            {
+                return tietohaku("23442");
+            }
+            else if (location == "Hartola")
+            {
+                return tietohaku("23623");
+            }
+            else
+            {
+                return 0;
+            }
+        }
+        else    {
+            return 0;
+        }
+    }
+
+
+    string lokaatio()
+{
+
+    if (Request.Form["location"] != null)
+    {
+        string location = Request.Form["location"];
+
+        if (location == "Mäntsälä, Levanto")
+        {
+            return "Mäntsälä, Levanto";
+        }
+        else if (location == "Mäntsälä, Hakkari")
+        {
+            return "Mäntsälä, Hakkari";
+        }
+        else if (location == "Lahti, Lotila")
+        {
+            return "Lahti, Lotila";
+        }
+        else if (location == "Lahti, Hollola")
+        {
+            return "Lahti, Hollola";    
+        }
+        else if (location == "Hämeenlinna, Hauho")
+        {
+            return "Hämeenlinna, Hauho";
+        }
+        else if (location == "Kangasala, Suorama")
+        {
+            return "Kangasala, Suorama";
+        }
+        else if (location == "Joutsa, Harvastensuo")
+        {
+            return "Joutsa, Harvastensuo" ;
+        }
+        else if (location == "Heinola, Lusi")
+        {
+            return "Heinola, Lusi";
+        }
+        else if (location == "Hartola")
+        {
+            return "Hartola";
+        }
+
+        else
+        {
+            return "Valitse mittauspiste";
+        }
+    }
+    else
+    {
+        return "Valitse mittauspiste";
+    }
+}
+
+    int tietohaku(string x)
     {
         System.IO.StringWriter writer = new System.IO.StringWriter();
-        System.Net.HttpWebRequest myRequest = (System.Net.HttpWebRequest)System.Net.WebRequest.Create($"http://tie.digitraffic.fi/api/tms/v1/stations/" + x + "/data");
+        System.Net.HttpWebRequest myRequest = (System.Net.HttpWebRequest)System.Net.WebRequest.Create(@"http://tie.digitraffic.fi/api/tms/v1/stations/" + x + @"/data");
         myRequest.AutomaticDecompression = System.Net.DecompressionMethods.GZip | System.Net.DecompressionMethods.Deflate;
         System.Net.WebResponse response = myRequest.GetResponse();
 
@@ -177,74 +262,6 @@
 
         return palautus1;
 
-    }
-
-    void Nappulafunktio1h()
-    {
-        mittarikuva = null;
-        Random rnd = new Random();
-        int num = rnd.Next(2001); // generoidaan fake dataa.
-        Response.Write(" autoa / 1h");
-        if (num >= 0 && num <= 500) {
-            mittarikuva = "matala.svg";
-        }
-        else if (num >= 501 && num <= 1000) {
-            mittarikuva = "keskiverto.svg";
-        }
-        else if (num >= 1001 && num <= 1500) {
-            mittarikuva = "korkea.svg";
-        }
-        else if (num >= 1501 && num <= 2000) {
-            mittarikuva = "ruuhka.svg";
-        }
-        else {
-            mittarikuva = "korkea.svg";
-        }
-
-    }
-
-    void Nappulafunktio3h()
-    {
-        Random rnd = new Random();
-        int num2 = rnd.Next(1501); // generoidaan fake dataa.
-        Response.Write(num2 * 3 + " autoa / 3h");
-        if (num2 >= 0 && num2 <= 500) {
-            mittarikuva = "matala.svg";
-        }
-        else if (num2 >= 501 && num2 <= 1000) {
-            mittarikuva = "keskiverto.svg";
-        }
-        else if (num2 >= 1001 && num2 <= 1500) {
-            mittarikuva = "korkea.svg";
-        }
-        else if (num2 >= 1501 && num2 <= 2000) {
-            mittarikuva = "ruuhka.svg";
-        }
-        else {
-            mittarikuva = "korkea.svg";
-        }
-    }
-
-    void Nappulafunktio1pv()
-    {
-        Random rnd = new Random();
-        int num3 = rnd.Next(1501); // generoidaan fake dataa.
-        Response.Write(num3 * 24 + " autoa / 1pv");
-        if (num3 >= 0 && num3 <= 500) {
-            mittarikuva = "matala.svg";
-        }
-        else if (num3 >= 501 && num3 <= 1000) {
-            mittarikuva = "keskiverto.svg";
-        }
-        else if (num3 >= 1001 && num3 <= 1500) {
-            mittarikuva = "korkea.svg";
-        }
-        else if (num3 >= 1501 && num3 <= 2000) {
-            mittarikuva = "ruuhka.svg";
-        }
-        else {
-            mittarikuva = "korkea.svg";
-        }
     }
 
 %>
