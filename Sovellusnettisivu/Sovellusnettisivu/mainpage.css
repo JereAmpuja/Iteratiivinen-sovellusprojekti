@@ -191,3 +191,12 @@ main {
     text-align: center;
     margin-bottom: 81%;
 }
+
+#tietohaettu:link, #tietohaettu:visited, #tietohaettu:active {
+    color: white;
+    text-decoration: none;
+}
+#tietohaettu:hover {
+    color: white;
+    text-decoration: underline;
+}

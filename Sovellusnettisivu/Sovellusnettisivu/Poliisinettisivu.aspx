@@ -66,7 +66,7 @@
         </p>
     
         <p class="rfooter">
-            Tietoja haettu sivulta www.esimerkki.fi
+            Tietoja haettu sivulta: <a id="tietohaettu" href="https://www.traficom.fi/fi">https://www.traficom.fi</a> 
         </p>
     </footer>
 </body>
