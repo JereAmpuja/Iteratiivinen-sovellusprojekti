@@ -66,7 +66,7 @@
         </p>
     
         <p class="rfooter">
-            Tietoja haettu sivulta: <a id="tietohaettu" href="https://www.traficom.fi/fi">https://www.traficom.fi</a> 
+            Tietoja haettu sivulta: <a id="tietohaettu" href="https://www.fintraffic.fi/fi">https://www.fintraffic.fi</a> 
         </p>
     </footer>
 </body>
@@ -107,16 +107,16 @@
     string ruuhkamittari()
     {
         string mittarikuva = null;
-        if (valinta() >= 0 && valinta() <= 500) {
+        if (valinta() >= 0 && valinta() <= 250) {
             mittarikuva = "matala.svg";
         }
-        else if (valinta() >= 501 && valinta() <= 1000) {
+        else if (valinta() >= 251 && valinta() <= 750) {
             mittarikuva = "keskiverto.svg";
         }
-        else if (valinta() >= 1001 && valinta() <= 1500) {
+        else if (valinta() >= 751 && valinta() <= 1000) {
             mittarikuva = "korkea.svg";
         }
-        else if (valinta() >= 1501 && valinta() <= 2000) {
+        else if (valinta() >= 1001 && valinta() <= 2000) {
             mittarikuva = "ruuhka.svg";
         }
         else {
