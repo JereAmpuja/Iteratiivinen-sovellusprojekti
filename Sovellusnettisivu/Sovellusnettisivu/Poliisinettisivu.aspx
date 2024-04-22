@@ -255,10 +255,14 @@
         string palautus = "";
         for (int i = 0; i < määrä.Length; i++)
         {
+            if (määrä[i] == ',' || määrä[i] == '.')
+            {
+                break;
+            }
             palautus += määrä[i];
         }
 
-        int palautus1 = Convert.ToInt32(palautus);
+       int palautus1 = Convert.ToInt32(palautus);
 
         return palautus1;
 
