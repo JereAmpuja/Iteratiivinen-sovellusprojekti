@@ -4,6 +4,7 @@
     padding: 0;
     font-family:;
     background-color: #f2f2f2;
+    min-height: 100vh;
 }
 
 header {
@@ -32,12 +33,12 @@ header {
 
 footer {
     background-color: #06377B;
-    height: 50px;
     margin-top: 50px;
     color: white;
-    padding-bottom: 30px;
     width: 100%;
-    height: 100px;
+    height: 30%;
+    position: absolute;
+    font-weight:bold;
 }
 
 .rfooter {
@@ -77,7 +78,7 @@ main {
 .left {
     background-color: #06377B;
     width: 257px;
-    height: 716px;
+    height: 95%;
     margin-right: 15px;
     color: #f1f1f1;
 }
@@ -85,7 +86,7 @@ main {
 .right {
     background-color: #06377B;
     width: 630px;
-    height: 716px;
+    height: 95%;
     color: #f1f1f1;
 }
 
@@ -146,7 +147,6 @@ main {
 }
 
 
-
 .mittari {
     background-color: #182538;
     width: 178px;
@@ -169,4 +169,35 @@ main {
     font-size: 24px;
     margin-top: -10px;
     text-align: right;
+}
+
+#pvm2 {
+    font-size: 24px;
+    margin-top: 3px;
+    text-align: right;
+}
+
+#klo2 {
+    font-size: 24px;
+    margin-top: -10px;
+    text-align: right;
+}
+
+#txt {
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80%;
+    text-align: center;
+    margin-bottom: 81%;
+}
+
+#tietohaettu:link, #tietohaettu:visited, #tietohaettu:active {
+    color: white;
+    text-decoration: none;
+}
+#tietohaettu:hover {
+    color: white;
+    text-decoration: underline;
 }
